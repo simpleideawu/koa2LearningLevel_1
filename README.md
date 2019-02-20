@@ -59,3 +59,14 @@
 ## lesson 09 koa + ejs模板
     安装依赖项
     
+## lesson 10 koa-static静态资源中间件
+    npm install --save koa-static  
+    const staticPath = './static';
+    
+    app.use(Static(
+        path.join( __dirname,  staticPath)
+    ));
+    
+## lesson 11 koa mysql数据库连接
+      
+    
