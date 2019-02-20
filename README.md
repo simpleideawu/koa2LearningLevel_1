@@ -43,4 +43,16 @@
 ## lesson 07 koa-router层级
     router相当于父级：router.use(‘/page’, page.routes(), page.allowedMethods())。
     用来设置层级路由
-
+## lesson 08 koa + cookie
+    设置读取cookie，设置cookie超时等选项
+    Cookie选项
+    
+    比如我们要存储用户名，保留用户登录状态时，你可以选择7天内不用登录，也可以选择30天内不用登录。这就需要在写入是配置一些选项：
+    
+    domain：写入cookie所在的域名
+    path：写入cookie所在的路径
+    maxAge：Cookie最大有效时长
+    expires：cookie失效时间
+    httpOnly:是否只用http请求中获得
+    overwirte：是否允许重写
+    
