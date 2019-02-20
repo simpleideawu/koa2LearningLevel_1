@@ -67,6 +67,7 @@
         path.join( __dirname,  staticPath)
     ));
     
-## lesson 11 koa mysql数据库连接
+## lesson 11 session
+
       
     
