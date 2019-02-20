@@ -2,7 +2,9 @@ const koa = require('koa');
 const app = new koa();
 
 app.use(ctx => {
+    if(ctx.method === 'POST'){
 
+    }
 })
 
 app.listen(3000,()=>{
