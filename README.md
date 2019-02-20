@@ -2,6 +2,7 @@
 # koa2第一阶段学习整理
 
 ## lesson 01
+    安装nodemon，使用nodemon server.js启动项目调试
     搭建koa环境
     npm init -y
     npm install koa --save
