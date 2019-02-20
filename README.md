@@ -41,5 +41,6 @@
     koa-router简单实例入门
 
 ## lesson 07 koa-router层级
-
+    router相当于父级：router.use(‘/page’, page.routes(), page.allowedMethods())。
+    用来设置层级路由
 
