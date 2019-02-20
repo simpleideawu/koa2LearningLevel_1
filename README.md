@@ -34,6 +34,10 @@
     koa-bodyparser中间件可以把koa2上下文的formData数据解析到ctx.request.body中。
 
 ## lesson 05 koa原生路由实现
-    
+    ctx.request.url
 
+## lesson 06 koa-router    
+    npm install --save koa-router
+    koa-router简单实例入门
+    
 
