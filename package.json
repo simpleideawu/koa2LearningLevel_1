@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/simpleideawu/koa2LearningLevel_1#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "koa-views": "^6.1.5"
   }
 }

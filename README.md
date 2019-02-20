@@ -54,5 +54,8 @@
     maxAge：Cookie最大有效时长
     expires：cookie失效时间
     httpOnly:是否只用http请求中获得
-    overwirte：是否允许重写
+    overwirte：
+    
+## lesson 09 koa + ejs模板
+    安装依赖项
     
