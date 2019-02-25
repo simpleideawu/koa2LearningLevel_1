@@ -70,7 +70,16 @@
 ## lesson 11 session
     session练习
     
-## lesson 12 async await    
+## lesson 12 async await   
+    简单demo联系 
+    
+## lesson 13 数据库操作
+    npm install mysql --save
+    创建config.js文件
+    
+## lesson 14 数据库ORM
+    需要安装sequelize和mysql2
+    
     
       
     
