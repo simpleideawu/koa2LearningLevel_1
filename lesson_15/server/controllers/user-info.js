@@ -11,15 +11,9 @@ module.exports = {
             message: '',
             data: null,
             code: ''
-        }
+        };
 
-        ctx.body={
-            success: false,
-            message: '',
-            data: null,
-            code: ''
-        }
-      /*  let userResult = await userInfoService.signIn( formData )
+        let userResult = await userInfoService.signIn( formData )
     
         if ( userResult ) {
             if ( formData.userName === userResult.name ) {
@@ -42,7 +36,7 @@ module.exports = {
             ctx.redirect('/work')
         } else {
             ctx.body = result
-        }*/
+        }
     },
 
 /**
