@@ -27,6 +27,16 @@ let query = function (sql,values) {
     });
 }
 
+let insertData = function(db,model){
+    console.log('model:::',model);
+    let sql=`
+        INSERT INTO ${db} (name,password,email)
+            VALUES ('${model.name}','${model.password}','${model.email}')
+    `;
+    return query(sql);
+}
+
 module.exports = {
-    query
+    query,
+    insertData
 };

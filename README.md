@@ -81,7 +81,7 @@
     需要安装sequelize和mysql2
 
 ## lesson 15 项目框架搭建
-
+    controllers modeles services 框架搭建
     
       
     

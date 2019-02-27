@@ -1,3 +1,11 @@
+const userInfoService = require('../services/user-info');
+
+const userCode={
+    FAIL_USER_NAME_OR_PASSWORD_ERROR:'用户名或者密码错误',
+    FAIL_USER_NO_EXIST:'用户名不存在',
+    FAIL_USER_NAME_IS_EXIST:'用户名存在',
+    FAIL_EMAIL_IS_EXIST:'邮箱不存在'
+};
 module.exports = {
     /**
      * 登录操作
@@ -5,7 +13,7 @@ module.exports = {
      */
     async signIn( ctx ) {
         let formData = ctx.request.body
-        console.log(formData)
+        console.log('formData:::',formData)
         let result = {
             success: false,
             message: '',
@@ -14,7 +22,7 @@ module.exports = {
         };
 
         let userResult = await userInfoService.signIn( formData )
-    
+        console.log('userResult:::',userResult);
         if ( userResult ) {
             if ( formData.userName === userResult.name ) {
                 result.success = true
@@ -39,61 +47,62 @@ module.exports = {
         }
     },
 
-/**
- * 注册操作
- * @param   {obejct} ctx 上下文对象
- */
-async signUp( ctx ) {
-    let formData = ctx.request.body
-    let result = {
-        success: false,
-        message: '',
-        data: null
-    }
+    /**
+     * 注册操作
+     * @param   {obejct} ctx 上下文对象
+     */
+    async signUp( ctx ) {
+        let formData = ctx.request.body
+        let result = {
+            success: false,
+            message: '',
+            data: null
+        };
 
-    let validateResult = userInfoService.validatorSignUp( formData )
+        console.log('formData:::',formData);
 
-    if ( validateResult.success === false ) {
-        result = validateResult
+        let validateResult = userInfoService.validatorSignUp( formData )
+
+        if ( validateResult.success === false ) {
+            result = validateResult
+            ctx.body = result
+            return
+        }
+
+        let existOne  = await userInfoService.getExistOne(formData)
+        console.log( existOne )
+
+        if ( existOne  ) {
+            if ( existOne .name === formData.userName ) {
+                result.message = userCode.FAIL_USER_NAME_IS_EXIST
+                ctx.body = result
+                return
+            }
+            if ( existOne .email === formData.email ) {
+                result.message = userCode.FAIL_EMAIL_IS_EXIST
+                ctx.body = result
+                return
+            }
+        }
+
+        let userResult = await userInfoService.create({
+            email: formData.email,
+            password: formData.password,
+            name: formData.userName,
+            create_time: new Date().getTime(),
+            level: 1,
+        })
+
+        console.log( 'userResult:::',userResult )
+
+        if ( userResult && userResult.insertId * 1 > 0) {
+            result.success = true
+        } else {
+            // result.message = userCode.ERROR_SYS
+        }
+
         ctx.body = result
-        return
-    }
-
-    let existOne  = await userInfoService.getExistOne(formData)
-    console.log( existOne )
-
-    if ( existOne  ) {
-        if ( existOne .name === formData.userName ) {
-            result.message = userCode.FAIL_USER_NAME_IS_EXIST
-            ctx.body = result
-            return
-        }
-        if ( existOne .email === formData.email ) {
-            result.message = userCode.FAIL_EMAIL_IS_EXIST
-            ctx.body = result
-            return
-        }
-    }
-
-
-    let userResult = await userInfoService.create({
-        email: formData.email,
-        password: formData.password,
-        name: formData.userName,
-        create_time: new Date().getTime(),
-        level: 1,
-    })
-
-    console.log( userResult )
-
-    if ( userResult && userResult.insertId * 1 > 0) {
-        result.success = true
-    } else {
-        result.message = userCode.ERROR_SYS  
-    }
-
-    ctx.body = result
-},
+    },
 
 }
 

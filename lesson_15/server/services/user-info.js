@@ -1,3 +1,16 @@
+const userModel = require('../models/user-info');
+
+const userCode={
+    FAIL_USER_NAME_OR_PASSWORD_ERROR:'用户名或者密码错误',
+    FAIL_USER_NO_EXIST:'用户名不存在',
+    FAIL_USER_NAME_IS_EXIST:'用户名存在',
+    FAIL_EMAIL_IS_EXIST:'邮箱不存在',
+    ERROR_USER_NAME:'',
+    ERROR_EMAIL:'',
+    ERROR_PASSWORD:'',
+    ERROR_PASSWORD_CONFORM:''
+};
+
 module.exports = {
     /**
      * 创建用户
@@ -69,10 +82,10 @@ module.exports = {
             result.message = userCode.ERROR_USER_NAME
             return result
         }
-        if ( !validator.isEmail( userInfo.email ) ) {
+        /*if ( !validator.isEmail( userInfo.email ) ) {
             result.message = userCode.ERROR_EMAIL
             return result
-        }
+        }*/
         if ( !/[\w+]{6,16}/.test( userInfo.password )  ) {
             result.message = userCode.ERROR_PASSWORD
             return result
