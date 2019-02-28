@@ -9,11 +9,14 @@ const koaLogger = require('koa-logger');
 const session = require('koa-session-minimal');
 const MysqlStore = require('koa-mysql-session');
 const Router = require('koa-router');
+var cors = require('koa2-cors');
+
 const router = new Router();
 const config = require('../config');
 const routers = require('./routers/index');
 console.log(config.database.USERNAME);
 const app = new Koa();
+app.use(cors());
 //session存储配置
 const sessionMysqlConfig = {
     user:config.database.USERNAME,
